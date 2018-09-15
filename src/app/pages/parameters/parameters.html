@@ -1,0 +1,43 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Параметры" ba-panel-class="with-scroll">
+
+                <div class="col-md-12">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.editItem()">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="formCourse">Курс Доллара</label>
+                                <input type="text" class="form-control" id="formCourse"
+                                       ng-model="vm.formCourse"
+                                       ng-minlength="4"
+                                       name="formCourse"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Изменить
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

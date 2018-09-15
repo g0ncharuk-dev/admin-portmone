@@ -1,0 +1,130 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Создать новость" class="with-scroll">
+                <div class="col-md-12">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.editItem()">
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formName">Имя *</label>
+                                <input type="text" class="form-control" id="formName"
+                                       ng-model="vm.formName"
+                                       ng-minlength="4"
+                                       name="formName"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mx-0">
+                                <label for="formEmail">Email</label>
+                                <input id="formEmail" name="formEmail"
+                                       type="email" class="form-control"
+                                       ng-model="vm.formEmail"
+                                       placeholder="Email"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mx-0">
+                                <label for="formPhone">Телефон</label>
+                                <input id="formPhone" name="formPhone"
+                                       type="text" class="form-control"
+                                       ng-model="vm.formPhone"
+                                       placeholder="Номер телефона"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formText">Сообщение *</label>
+                                <textarea class="form-control" id="formText"
+                                          ng-model="vm.formText"
+                                          ng-minlength="4"
+                                          name="formText" placeholder="Сообщение"
+                                          readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="has-success">
+                                <div class="checkbox">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" ng-model="vm.formState" value="true">
+                                        <span>Публиковать</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="with-line">Ответ</h3>
+                        <div class="col-sm-12">
+                            <div class="form-group "
+                                 ng-class="{'has-error':
+                                 form.formAnsName.$error.required&&
+                                 (form.$submitted || form.formAnsName.$touched)||
+                                 form.formAnsName.$error.minlength}">
+                                <label for="formAnsName">Имя</label>
+                                <input type="text" class="form-control" id="formAnsName"
+                                       ng-model="vm.formAnsName"
+                                       ng-minlength="4"
+                                       name="formAnsName"
+                                       placeholder="Имя">
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formAnsName.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group"
+                                 ng-class="{'has-error': form.formDate.$error.required&&
+                                 (form.$submitted ||
+                                 form.formDate.$touched)}">
+                                <label for="formDate">Дата *</label>
+                                <input type="datetime-local" class="form-control" id="formDate"
+                                       ng-model="vm.formDate"
+                                       name="formDate">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group"
+                                 ng-class="{'has-error':
+                                 form.formAnsText.$error.required&&
+                                 (form.$submitted ||form.formAnsText.$touched)||
+                                 form.formAnsText.$error.minlength}">
+                                <label for="formAnsText">Сообщение</label>
+                                <textarea class="form-control" id="formAnsText"
+                                          ng-model="vm.formAnsText"
+                                          ng-minlength="4"
+                                          name="formAnsText" placeholder="Сообщение">
+                                </textarea>
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formAnsText.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Изменить
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

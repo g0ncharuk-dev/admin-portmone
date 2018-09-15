@@ -1,0 +1,48 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Создать фильтр" class="with-scroll">
+                <div class="col-md-12">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.createItem()">
+                        <h3 class="with-line">Основные</h3>
+                        <div class="col-sm-12">
+                            <div class="form-group "
+                                 ng-class="{'has-error':
+                                 form.formName.$error.required&&
+                                 (form.$submitted || form.formName.$touched)||
+                                 form.formName.$error.minlength}">
+                                <label for="formName">Название *</label>
+                                <input type="text" class="form-control" id="formName"
+                                       ng-model="vm.formName"
+                                       ng-minlength="4"
+                                       name="formName" placeholder="Название категории"
+                                       required>
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formName.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Создать
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

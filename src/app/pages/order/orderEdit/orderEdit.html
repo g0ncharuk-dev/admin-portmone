@@ -1,0 +1,268 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="информация о заказе" class="with-scroll">
+                <!--<div class="hidden">-->
+                    <!--<table class="table">-->
+                        <!--<thead>-->
+                        <!--<tr class="black-muted-bg">-->
+                            <!--<th>Даные</th>-->
+                            <!--<th></th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Имя</td>-->
+                            <!--<td>{{vm.editObj.name}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Email</td>-->
+                            <!--<td>{{vm.editObj.eamil}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Телефон</td>-->
+                            <!--<td>{{vm.editObj.phone}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Сообщение</td>-->
+                            <!--<td>{{vm.editObj.comment}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Как связаться</td>-->
+                            <!--<td>{{vm.editObj.calltype}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Доставка</td>-->
+                            <!--<td>{{vm.editObj.delivery}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Оплата</td>-->
+                            <!--<td>{{vm.editObj.payment}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Город</td>-->
+                            <!--<td>{{vm.editObj.city}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Адрес</td>-->
+                            <!--<td>{{vm.editObj.address}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Количество</td>-->
+                            <!--<td>{{vm.editObj.totalQuantity}}</td>-->
+                        <!--</tr>-->
+                        <!--<tr class="no-top-border">-->
+                            <!--<td>Цена</td>-->
+                            <!--<td>{{vm.editObj.totalPrice}}</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                    <!--<table class="table">-->
+                        <!--<thead>-->
+                        <!--<tr class="black-muted-bg">-->
+                            <!--<th>ID</th>-->
+                            <!--<th>Название</th>-->
+                            <!--<th class="align-right">Цена</th>-->
+                            <!--<th class="align-right">Количество</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="item in vm.editObj.products" class="no-top-border">-->
+                            <!--<td class="align-right">{{item.id}}</td>-->
+                            <!--<td class="align-right">{{item.name}}</td>-->
+                            <!--<td class="align-right">{{item.price}} грн</td>-->
+                            <!--<td class="align-right">{{item.quantity}}</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+
+
+                <div class="col-sm-6">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.editItem()">
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formName">Имя</label>
+                                <input type="text" class="form-control" id="formName"
+                                       ng-model="vm.formName"
+                                       ng-minlength="4"
+                                       name="formName"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mx-0">
+                                <label for="formEmail">Email</label>
+                                <input id="formEmail" name="formEmail"
+                                       type="email" class="form-control"
+                                       ng-model="vm.formEmail"
+                                       placeholder="Email"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group mx-0">
+                                <label for="formPhone">Телефон</label>
+                                <input id="formPhone" name="formPhone"
+                                       type="text" class="form-control"
+                                       ng-model="vm.formPhone"
+                                       placeholder="Номер телефона"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formMsg">Сообщение</label>
+                                <textarea class="form-control" id="formMsg"
+                                          ng-model="vm.formMsg"
+                                          ng-minlength="4"
+                                          name="formMsg" placeholder="Сообщение"
+                                          readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formCalltype">Как связатся</label>
+                                <input type="text" class="form-control" id="formCalltype"
+                                       ng-model="vm.formCalltype"
+                                       ng-minlength="4"
+                                       name="formCalltype"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formDelivery">Доставка</label>
+                                <input type="text" class="form-control" id="formDelivery"
+                                       ng-model="vm.formDelivery"
+                                       ng-minlength="4"
+                                       name="formDelivery"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formPayment">Оплата</label>
+                                <input type="text" class="form-control" id="formPayment"
+                                       ng-model="vm.formPayment"
+                                       ng-minlength="4"
+                                       name="formPayment"
+                                       placeholder="Название новости"
+                                       readonly>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="has-success">
+                                <div class="checkbox">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" ng-model="vm.formState">
+                                        <span>Заказ выполнен</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="has-error">
+                                <div class="checkbox">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" ng-model="vm.formStateErr">
+                                        <span>Заказ не выполнен</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formCity">Город</label>
+                                <input type="text" class="form-control" id="formCity"
+                                       ng-model="vm.formCity"
+                                       ng-minlength="4"
+                                       name="formCity"
+                                       placeholder="Город">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="formAddress">Адрес</label>
+                                <input type="text" class="form-control" id="formAddress"
+                                       ng-model="vm.formAddress"
+                                       ng-minlength="4"
+                                       name="formAddress"
+                                       placeholder="Адрес">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group"
+                                 ng-class="{'has-error':
+                                     form.formTotalQuantity.$error.required&&
+                                     (form.$submitted || form.formTotalQuantity.$touched)}">
+                                <label for="formTotalQuantity">Количество</label>
+                                <input type="number" class="form-control" id="formTotalQuantity"
+                                       ng-model="vm.formTotalQuantity"
+                                       min="0"
+                                       name="formTotalQuantity" placeholder="Количество"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group"
+                                 ng-class="{'has-error':
+                                     form.formTotalPrice.$error.required&&
+                                     (form.$submitted || form.formTotalPrice.$touched)}">
+                                <label for="formTotalPrice">Цена</label>
+                                <input type="number" class="form-control" id="formTotalPrice"
+                                       ng-model="vm.formTotalPrice"
+                                       min="0"
+                                       name="formTotalPrice" placeholder="Цена"
+                                       required>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Изменить
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <div class="horizontal-scroll">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr class="black-muted-bg">
+                                <th>ID</th>
+                                <th>Название</th>
+                                <th class="align-right">Цена</th>
+                                <th class="align-right">Количество</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in vm.editObj.products" class="no-top-border">
+                                <td class="align-right">{{item.id}}</td>
+                                <td class="align-right">{{item.name}}</td>
+                                <td class="align-right">{{item.price}} грн</td>
+                                <td class="align-right">{{item.quantity}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Список товаров" ba-panel-class="">
+                <div class="horizontal-scroll table-panel_my ">
+                    <div class="add-row-editable-table col-sm-6 pull-left">
+                        <button class="btn btn-success" ng-click="vm.createPage()">Добавить</button>
+                    </div>
+                    <table class="table" st-table="vm.itemList" st-safe-src="vm._itemList">
+                        <thead>
+                        <tr class="sortable">
+                            <th st-ratio="10" class="table-id" st-sort="id" st-sort-default="true">#</th>
+                            <th st-ratio="10"></th>
+                            <th st-ratio="20" st-sort="name">Категория</th>
+                            <th st-ratio="30" st-sort="name">Название</th>
+                            <th st-ratio="20" st-sort="name">Цена</th>
+                            <th st-ratio="20" st-sort="name">Старая Цена</th>
+                            <th st-ratio="20" st-sort="name">Количество</th>
+                            <th st-ratio="20" st-sort="name">Скидка</th>
+                            <th st-ratio="20" st-sort="name">В наличии</th>
+                            <th st-ratio="20" st-sort="name">В рекомендуемом</th>
+                            <th st-ratio="50" style="min-width: 130px;"></th>
+                        </tr>
+                        <tr>
+                            <th st-ratio="10" class="table-id" st-sort="id"></th>
+                            <th st-ratio="10"></th>
+                            <th st-ratio="20"><input st-search="name" placeholder="Искать"
+                                                     class="input-sm form-control search-input"
+                                                     type="search"/></th>
+                            <th st-ratio="30"><input st-search="name" placeholder="Искать"
+                                                     class="input-sm form-control search-input" type="search"/></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="20"></th>
+                            <th st-ratio="50"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in vm.itemList">
+                            <td st-ratio="10" class="table-id">{{item.id}}</td>
+                            <td st-ratio="10" class="text-left">
+                                <img ng-src="{{item.image_main}}" width="30" height="30">
+                            </td>
+                            <td st-ratio="20" class="text-left">{{item.category}}</td>
+                            <td st-ratio="30" class="text-left"
+                                style="white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; ">
+                                <a ng-href="{{item.link}}" title="{{item.name}}" target="_blank">{{item.name}}</a>
+                            </td>
+                            <td st-ratio="20" class="text-left">
+                                <span editable-number="item.price" e-name="price" e-form="rowform" e-required>
+                                  {{ item.price || 'нету' }}
+                                </span>
+                            </td>
+                            <td st-ratio="20" class="text-left">
+                                <span editable-number="item.price_old" e-name="price_old" e-form="rowform" e-required>
+                                  {{ item.price_old || 'нету' }}
+                                </span>
+                            </td>
+                            <td st-ratio="20" class="text-left">
+                                <span editable-number="item.count" e-name="count" e-form="rowform" e-required>
+                                  {{ item.count || 'нету' }}
+                                </span>
+                            </td>
+                            <td st-ratio="20" class="text-left">
+                                 <span editable-number="item.discount" e-name="discount" e-form="rowform" e-required>
+                                  {{ item.discount || 'нету' }}
+                                </span>
+                            </td>
+                            <td st-ratio="20" class="text-left selector-edit">
+                                <span editable-select="item.in_stock" e-name="in_stock" onshow="loadGroups()"
+                                      e-form="rowform" e-selectpicker
+                                      e-ng-options="g.val as g.text for g in vm.showInStockVal">
+                                  {{ vm.showInStock(item) }}
+                                </span>
+                            </td>
+                            <td st-ratio="20" class="text-left selector-edit">
+                                <span editable-select="item.in_recommended" e-name="in_recommended"
+                                       e-form="rowform" e-selectpicker
+                                      e-ng-options="g.val as g.text for g in vm.showInRecommendedVal">
+                                  {{ vm.showInRecommended(item) }}
+                                </span>
+                            </td>
+                            <td st-ratio="50" class="text-right">
+                                <form editable-form name="rowform" ng-show="rowform.$visible"
+                                      onbeforesave="vm.editList($data, item.id)"
+                                      class="form-buttons form-inline"
+                                      shown="inserted == vm.itemList">
+                                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success btn-sm">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                                            class="btn btn-danger btn-sm">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                                <div class="buttons" ng-show="!rowform.$visible">
+                                    <button class="btn btn-warning btn-sm"
+                                            title="Редактировать"
+                                            ng-click="rowform.$show()">
+                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="btn btn-primary btn-sm"
+                                            title="Редактировать полностью"
+                                            ng-click="vm.editPage(item.id)">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm"
+                                            title="Удалить"
+                                            ng-click="vm.openDeleteModal('app/pages/catalog/product/productDelete/productDeleteModal.html', 'sm',item.id)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <div st-pagination="" st-items-by-page="vm.tableSize"
+                                     st-displayed-pages="5"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

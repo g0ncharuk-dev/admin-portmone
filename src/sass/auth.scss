@@ -1,0 +1,23 @@
+@import "common.scss";
+@import "theme/_socicon.scss";
+@import "theme/_layout.scss";
+@import 'theme/buttons.scss';
+@import 'app/form.scss';
+
+html {
+  min-height: 520px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font: 14px/16px $font-family;
+  color: $default-text;
+  background-color: $body-bg;
+
+}
+
+$text-color: #ffffff;
+
+
+

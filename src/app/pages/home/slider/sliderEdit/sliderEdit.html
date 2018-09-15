@@ -1,0 +1,103 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Редактировать слайд" class="with-scroll">
+                <div class="col-md-12">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.editItem()">
+                        <div class="col-sm-12">
+                            <div class="form-group "
+                                 ng-class="{'has-error':
+                                 form.formTitle1.$error.required&&
+                                 (form.$submitted || form.formTitle1.$touched)||
+                                 form.formTitle1.$error.minlength}">
+                                <label for="formTitle1">Первое заглавие</label>
+                                <input type="text" class="form-control" id="formTitle1"
+                                       ng-model="vm.formTitle1"
+                                       ng-minlength="4"
+                                       name="formTitle1" placeholder="Первое заглавие"
+                                       required>
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formTitle1.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group "
+                                 ng-class="{'has-error':
+                                 form.formTitle2.$error.required&&
+                                 (form.$submitted || form.formTitle2.$touched)||
+                                 form.formTitle2.$error.minlength}">
+                                <label for="formTitle2">Второе заглавие</label>
+                                <input type="text" class="form-control" id="formTitle2"
+                                       ng-model="vm.formTitle2"
+                                       ng-minlength="4"
+                                       name="formTitle2" placeholder="Второе заглавие"
+                                       required>
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formTitle2.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group"
+                                 ng-class="{'has-error':
+                                 form.formLink.$error.url&&
+                                 (form.$submitted || form.formLink.$touched)}">
+                                <label for="formLink">Ссылка</label>
+                                <input type="url" class="form-control" id="formLink"
+                                       ng-model="vm.formLink"
+                                       name="formLink" placeholder="ссылка">
+                                <span class="help-block sub-little-text"
+                                      ng-show="form.formLink.$error.url">
+                                    Некоректная ссылка! Ссылка должна быть вида http://example</span>
+                            </div>
+                        </div>
+
+                        <!--fileUpload-->
+                        <div class="col-sm-12 thumb-upload">
+                            <img ng-src="{{vm.formImgTempUrl}}" height="150" width="auto">
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group files-upload"
+                                 ng-class="{'has-error':
+                                     form.formImg.$error.required&&
+                                     (form.$submitted ||
+                                     form.formImg.$touched)}">
+                                <input id="formImg"
+                                       type="file"
+                                       accept="image/*"
+                                       my-file="vm.formImg"
+                                       name="formImg">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 thumb-upload">
+                            <div ng-repeat="item in vm.formImg">
+                                <div ng-thumb="{ file: item, height: 100 }"></div>
+                            </div>
+                        </div>
+                        <!--fileUpload-->
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Создать
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

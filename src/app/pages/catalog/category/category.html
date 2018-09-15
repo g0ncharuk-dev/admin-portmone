@@ -1,0 +1,67 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Список категорий" ba-panel-class="with-scroll">
+                <div class="horizontal-scroll">
+                    <div class="add-row-editable-table col-sm-6 pull-left">
+                        <button class="btn btn-success" ng-click="vm.createPage()">Добавить</button>
+                    </div>
+                    <table class="table text-center" st-table="vm.itemList" st-safe-src="vm._itemList">
+                        <thead>
+                        <tr class="sortable ">
+                            <th class="table-id" st-sort="id" st-sort-default="true">#</th>
+                            <th st-sort="name">Название</th>
+                            <th st-sort="parent_catalog_name">Родительский каталог</th>
+                            <th>Уровень</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="name" placeholder="Искать по названию"
+                                       class="input-sm form-control search-input"
+                                       type="search"/>
+                            </th>
+                            <th>
+                                <input st-search="parent_catalog_name" placeholder="Искать по категории"
+                                       class="input-sm form-control search-input"
+                                       type="search"/>
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in vm.itemList">
+                            <td class="table-id">{{item.id}}</td>
+                            <td class="text-left">{{item.name}}</td>
+                            <td class="text-left">{{item.parent.name}}</td>
+                            <td class="text-left">{{item.level}}</td>
+                            <td class="text-right">
+                                <button class="btn btn-primary btn-sm"
+                                        title="Редактировать"
+                                        ng-click="vm.editPage(item)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm"
+                                        title="Удалить"
+                                        ng-click="vm.openDeleteModal('app/pages/catalog/category/categoryDelete/categoryDeleteModal.html', 'sm', item.id)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <div st-pagination="" st-items-by-page="vm.tableSize"
+                                     st-displayed-pages="5"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

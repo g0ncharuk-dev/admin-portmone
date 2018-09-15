@@ -1,0 +1,177 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="" class="with-scroll">
+                <div class="col-sm-12">
+                    <form name="form"
+                          enctype="multipart/form-data"
+                          ng-submit="vm.editItem()">
+                        <div class="col-sm-12">
+                            <h3 class="with-line">Основные</h3>
+                            <div class="col-sm-12">
+                                <div class="form-group "
+                                     ng-class="{'has-error':
+                                 form.formName.$error.required&&
+                                 (form.$submitted || form.formName.$touched)||
+                                 form.formName.$error.minlength}">
+                                    <label for="formName">Название *</label>
+                                    <input type="text" class="form-control" id="formName"
+                                           ng-model="vm.formName"
+                                           ng-minlength="4"
+                                           name="formName" placeholder="Название категории"
+                                           required>
+                                    <span class="help-block sub-little-text"
+                                          ng-show="form.formName.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Родительский каталог</label>
+                                    <tree-switcher class="tree-dropdown" data="vm.categoryTree"
+                                                   selected="vm.formParentCategory"></tree-switcher>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Все характеристики</label>
+                                    <ui-select multiple ng-model="vm.filterItemSelected"
+                                               ng-disabled="false"
+                                               search-enabled="true"
+                                               append-to-body="true"
+                                               class="form-control ">
+                                        <ui-select-match placeholder="Все характеристики">
+                                            {{$item.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="item in vm.filterItem | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Фильтры</label>
+                                    <ui-select multiple
+                                               ng-model="vm.filterItemCheck"
+                                               ng-disabled="false"
+                                               search-enabled="true"
+                                               append-to-body="true"
+                                               class="form-control ">
+                                        <ui-select-match placeholder="Фильтры">
+                                            {{$item.name}}
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                                repeat="item in vm.filterItemSelected | filter: $select.search">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <h3 class="with-line">Изображение</h3>
+                            <!--fileUpload-->
+                            <div class="col-sm-12 thumb-upload">
+                                <img ng-src="{{vm.formImgTempUrl}}" height="150" width="auto">
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group files-upload"
+                                     ng-class="{'has-error':
+                                     form.formImg.$error.required&&
+                                     (form.$submitted ||
+                                     form.formImg.$touched)}">
+                                    <input id="formImg"
+                                           type="file"
+                                           accept="image/*"
+                                           my-file="vm.formImg"
+                                           name="formImg">
+                                </div>
+                                {{vm.formImg.name}}
+                            </div>
+                            <div class="col-sm-12 thumb-upload">
+                                <div ng-repeat="item in vm.formImg">
+                                    <div ng-thumb="{ file: item, height: 100 }"></div>
+                                </div>
+                            </div>
+                            <!--fileUpload-->
+                        </div>
+
+                        <div class="col-sm-12">
+                            <h3 class="with-line">SEO</h3>
+                            <div class="col-sm-12">
+                                <div class="form-group "
+                                     ng-class="{'has-error':
+                                 form.formMetaTitle.$error.required&&
+                                 (form.$submitted || form.formMetaTitle.$touched)||
+                                 form.formMetaTitle.$error.minlength}">
+                                    <label for="formMetaTitle">Title *</label>
+                                    <input type="text" class="form-control" id="formMetaTitle"
+                                           ng-model="vm.formMetaTitle"
+                                           ng-minlength="4"
+                                           name="formMetaTitle" placeholder="Title"
+                                           required>
+                                    <span class="help-block sub-little-text"
+                                          ng-show="form.formMetaTitle.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group "
+                                     ng-class="{'has-error':
+                                     (form.$submitted || form.formMetaDescription.$touched)&&
+                                     form.formMetaDescription.$error.minlength}">
+                                    <label for="formMetaDescription">Description</label>
+                                    <textarea class="form-control" id="formMetaDescription"
+                                              ng-model="vm.formMetaDescription"
+                                              ng-minlength="4"
+                                              name="formMetaDescription" placeholder="Description"></textarea>
+                                    <span class="help-block sub-little-text"
+                                          ng-show="form.formMetaDescription.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group "
+                                     ng-class="{'has-error':
+                                     (form.$submitted || form.formMetaDescription.$touched)&&
+                                     form.formMetaDescription.$error.minlength}">
+                                    <label for="formName">Keywords</label>
+                                    <textarea class="form-control" id="formMetaKeywords"
+                                              ng-model="vm.formMetaKeywords"
+                                              ng-minlength="4"
+                                              name="formMetaKeywords" placeholder="Keywords"></textarea>
+                                    <span class="help-block sub-little-text"
+                                          ng-show="form.formMetaKeywords.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="formSeoText">Seo-текст</label>
+                                <textarea id="formSeoText" froala="vm.editorOptions"
+                                          ng-model="vm.formSeoText"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <ul class="pager ba-wizard-pager">
+                                <li class="previous">
+                                    <button ng-click="vm.goBack()"
+                                            type="button" class=" btn btn-primary">
+                                        <span aria-hidden="true">&larr;</span> Назад
+                                    </button>
+                                </li>
+                                <li class="next">
+                                    <button ng-disabled="form.$invalid&&!form.formImg.$valid" type="submit"
+                                            class="btn btn-success">Изменить
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

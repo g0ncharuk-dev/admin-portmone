@@ -1,0 +1,78 @@
+<div class="widgets">
+    <div ba-panel ba-panel-title="Настроить SEO главной страници">
+        <form name="form"
+              class="form-horizontal"
+              enctype="multipart/form-data"
+              ng-submit="vm.editItem()">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group mx-0"
+                         ng-class="{'has-error':
+                                 form.formMetaTitle.$error.required&&
+                                 (form.$submitted || form.formMetaTitle.$touched)||
+                                 form.formMetaTitle.$error.minlength}">
+                        <label for="formMetaTitle">Title *</label>
+                        <input type="text" class="form-control" id="formMetaTitle"
+                               ng-model="vm.formMetaTitle"
+                               ng-minlength="4"
+                               name="formMetaTitle" placeholder="Title"
+                               required>
+                        <span class="help-block sub-little-text"
+                              ng-show="form.formMetaTitle.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group mx-0"
+                         ng-class="{'has-error':
+                                     (form.$submitted || form.formMetaDescription.$touched)&&
+                                     form.formMetaDescription.$error.minlength}">
+                        <label for="formMetaDescription">Description</label>
+                        <textarea class="form-control" id="formMetaDescription"
+                                  ng-model="vm.formMetaDescription"
+                                  ng-minlength="4"
+                                  name="formMetaDescription" placeholder="Description"></textarea>
+                        <span class="help-block sub-little-text"
+                              ng-show="form.formMetaDescription.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group mx-0"
+                         ng-class="{'has-error':
+                                     (form.$submitted || form.formMetaKeywords.$touched)&&
+                                     form.formMetaKeywords.$error.minlength}">
+                        <label for="formMetaKeywords">Keywords</label>
+                        <textarea class="form-control" id="formMetaKeywords"
+                                  ng-model="vm.formMetaKeywords"
+                                  ng-minlength="4"
+                                  name="formMetaKeywords" placeholder="Keywords"></textarea>
+                        <span class="help-block sub-little-text"
+                              ng-show="form.formMetaKeywords.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="form-group mx-0">
+                        <label for="formMetaKeywords">SEO-text</label>
+                        <textarea froala="vm.editorOptions" ng-model="vm.formSeoText"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-success">Применить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

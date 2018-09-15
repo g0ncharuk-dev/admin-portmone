@@ -1,0 +1,43 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Баннер для акций">
+                <form name="form"
+                      class="form-horizontal"
+                      enctype="multipart/form-data"
+                      ng-submit="vm.editItem()">
+                    <!--fileUpload-->
+                    <div class="col-sm-12 thumb-upload">
+                        <div ng-repeat="item in vm.formImgTempUrl">
+                            <div ng-thumb-preview="{ file: item, height: 200 }"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group files-upload"
+                             ng-class="{'has-error':
+                                     form.formImg.$error.required&&
+                                     (form.$submitted ||
+                                     form.formImg.$touched)}">
+                            <input id="formImg"
+                                   type="file"
+                                   accept="image/*"
+                                   my-file="vm.formImg"
+                                   name="formImg">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 thumb-upload">
+                        <div ng-repeat="item in vm.formImg">
+                            <div ng-thumb="{ file: item, height: 100 }"></div>
+                        </div>
+                    </div>
+                    <!--fileUpload-->
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-success">Применить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+//#svg-loader {
+//  display: block;
+//  margin: 0 auto;
+//  animation: svg-rotate 8000ms linear infinite;
+//  circle {
+//    fill: transparent;
+//    stroke: $success;
+//    stroke-width: 4;
+//    stroke-linecap: round;
+//    stroke-dasharray: 0, 150.796445;
+//    animation: stroke-dash 2000ms linear infinite;
+//  }
+//}
+//@keyframes svg-rotate {
+//  to {
+//    transform: rotate(360deg);
+//  }
+//}
+//@keyframes stroke-dash {
+//  0% {
+//    stroke-dasharray: 0, 150.796445;
+//    stroke-dashoffset: 0;
+//  }
+//  50% {
+//    stroke-dasharray: 150.796445, 0;
+//    stroke-dashoffset: 0;
+//  }
+//  100% {
+//    stroke-dasharray: 150.796445, 150.796445;
+//    stroke-dashoffset: -150.796445;
+//  }
+//}
+//
+
+#loader-modal{
+  .modal-content {
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+  }
+  .loader-main {
+    background: #209e91;
+    border-radius: 50%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    height: 50px;
+    width: 50px;
+    .minuteHand {
+      animation: spinnerTwo 1s linear infinite;
+      background: #eeeeee;
+      border-radius: 100px;
+      height: 17px;
+      transform-origin: top;
+      position: absolute;
+      top: 50%;
+      width: 2px;
+    }
+    .hourHand {
+      animation: spinnerTwo 7s linear infinite;
+      background: #eeeeee;
+      border-radius: 100px;
+      height: 22px;
+      transform-origin: top;
+      position: absolute;
+      top: 50%;
+      width: 2px;
+    }
+    .dot {
+      background: #eeeeee;
+      border-radius: 100%;
+      height: 6px;
+      width: 6px;
+    }
+  }
+  @keyframes spinnerTwo {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(360deg)
+    }
+  }
+}
+

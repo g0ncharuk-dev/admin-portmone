@@ -1,0 +1,131 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Настроить SEO главной страници">
+                <form name="form"
+                      class="form-horizontal"
+                      enctype="multipart/form-data"
+                      ng-submit="vm.editItem()">
+                    <div class="col-sm-6">
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':form.formPhone1.$error.minlength}">
+                            <label for="formPhone1">#1 Телефон</label>
+                            <input id="formPhone1" name="formPhone1"
+                                   type="text" class="form-control"
+                                   mask="+99 999 999-99-99"
+                                   restrict="reject"
+                                   ng-model="vm.formPhone1"
+                                   ng-minlength="17"
+                                   placeholder="#1 Номер телефона">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formPhone1.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 17</span>
+
+                        </div>
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':form.formPhone2.$error.minlength}">
+                            <label for="formPhone2">#2 Телефон</label>
+                            <input id="formPhone2" name="formPhone2"
+                                   type="text" class="form-control"
+                                   mask="+99 999 999-99-99"
+                                   restrict="reject"
+                                   ng-model="vm.formPhone2"
+                                   ng-minlength="17"
+                                   placeholder="#2 Номер телефона">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formPhone2.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 17</span>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':
+                         form.formEmail1.$invalid &&
+                         (form.formEmail1.$dirty ||
+                         form.formEmail1.$submitted)}">
+                            <label for="formEmail1">#1 Email</label>
+                            <input id="formEmail1" name="formEmail1"
+                                   type="email" class="form-control"
+                                   ng-model="vm.formEmail1"
+                                   placeholder="#1 Email">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formEmail1.$invalid &&
+                                           (form.formEmail1.$dirty ||
+                                           form.formEmail1.$submitted)">
+                                    Не коректный Email-адрес</span>
+                        </div>
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':
+                         form.formEmail2.$invalid &&
+                         (form.formEmail2.$dirty ||
+                         form.formEmail2.$submitted)}">
+                            <label for="formEmail2">#2 Email</label>
+                            <input id="formEmail2" name="formEmail2"
+                                   type="email" class="form-control"
+                                   ng-model="vm.formEmail2"
+                                   placeholder="#2 Email">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formEmail2.$invalid &&
+                                           (form.formEmail2.$dirty ||
+                                           form.formEmail2.$submitted)">
+                                    Не коректный Email-адрес</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':
+                                 form.formAddress.$error.required&&
+                                 (form.$submitted || form.formAddress.$touched)||
+                                 form.formAddress.$error.minlength}">
+                            <label for="formAddress">Адрес</label>
+                            <input type="text" class="form-control" id="formAddress"
+                                   ng-model="vm.formAddress"
+                                   ng-minlength="4"
+                                   name="formAddress" placeholder="Адрес"
+                                   required>
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formAddress.$error.minlength">
+                                    Слишком короткий текст! Минимальная длинна 4</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':
+                                 form.formLink1.$error.url&&
+                                 (form.$submitted || form.formLink1.$touched)}">
+                            <label for="formLink1">Ссылка на VK</label>
+                            <input type="url" class="form-control" id="formLink1"
+                                   ng-model="vm.formLink1"
+                                   name="formLink1" placeholder="Ссылка">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formLink1.$error.url">
+                                    Некоректная ссылка! Ссылка должна быть вида http://example</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group mx-0"
+                             ng-class="{'has-error':
+                                 form.formLink2.$error.url&&
+                                 (form.$submitted || form.formLink2.$touched)
+                                 }">
+                            <label for="formLink2">Ссылка на Facebook</label>
+                            <input type="url" class="form-control" id="formLink2"
+                                   ng-model="vm.formLink2"
+                                   name="formLink2" placeholder="Ссылка">
+                            <span class="help-block sub-little-text"
+                                  ng-show="form.formLink2.$error.url">
+                                    Некоректная ссылка! Ссылка должна быть вида http://example</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-success">Применить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

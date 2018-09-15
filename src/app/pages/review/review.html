@@ -1,0 +1,72 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Список категорий" ba-panel-class="with-scroll">
+                <div class="horizontal-scroll">
+                    <table class="table text-center" st-table="vm.itemList" st-safe-src="vm._itemList">
+                        <thead>
+                        <tr class="sortable ">
+                            <th class="table-id" st-sort="id" st-sort-default="true">#</th>
+                            <th st-sort="name">Даные</th>
+                            <th st-sort="parent_catalog_name">Сообщение</th>
+                            <th>Дата</th>
+                            <th>Ответ</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <input st-search="name" placeholder="Искать"
+                                       class="input-sm form-control search-input"
+                                       type="search"/>
+                            </th>
+                            <th>
+                                <input st-search="parent_catalog_name" placeholder="Искать"
+                                       class="input-sm form-control search-input"
+                                       type="search"/>
+                            </th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-style="{ 'background-color': item.state == 'canceled' ? '#ffd7d7' : 'none' }"
+                            ng-repeat="item in vm.itemList">
+                            <td class="table-id">{{item.id}}</td>
+                            <td style="min-width: 200px" class="text-left">
+                                {{item.name}} <br>
+                                {{item.email}} <br>
+                                {{item.phone}}
+                            </td>
+                            <td class="text-left">{{item.message}}</td>
+                            <td style="min-width: 100px" class="text-left">{{item.date}}</td>
+                            <td class="text-left">{{item.answer.name?"Есть":"Нету"}}</td>
+                            <td class="text-right">
+                                <button class="btn btn-primary btn-sm"
+                                        title="Редактировать"
+                                        ng-click="vm.editPage(item)">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-danger btn-sm"
+                                        title="Удалить"
+                                        ng-click="vm.openDeleteModal('app/pages/review/reviewDelete/reviewDeleteModal.html', 'sm', item.id)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <div st-pagination="" st-items-by-page="vm.tableSize"
+                                     st-displayed-pages="5"></div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.files-upload {
+  margin: 15px 0;
+  input {
+    color: #666666;
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 50px 0 50px 35%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+  }
+}
+
+.thumb-upload {
+  display: flex;
+  flex-wrap: wrap;
+  [ng-thumb] {
+    padding: 5px;
+  }
+}
