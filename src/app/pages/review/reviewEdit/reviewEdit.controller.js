@@ -25,7 +25,7 @@
             vm.formEmail = vm.editObj.email;
             vm.formPhone = vm.editObj.phone;
             vm.formText = vm.editObj.message;
-            vm.formState = vm.editObj.state === "allowed";
+            vm.formState = vm.editObj.state;
 
             vm.formAnsName = vm.editObj.answer.name;
             vm.formDate = new Date(vm.editObj.date);
@@ -36,7 +36,7 @@
             var fd = new FormData();
             fd.append("remember_token", vm.token);
             fd.append("id", vm.editObj.id);
-            fd.append("state", vm.formState?"allowed":"canceled");
+            fd.append("approved", vm.formState?true:false);
             fd.append("answer", vm.formName);
             fd.append("news_date", moment(vm.formDate).format('YYYY-MM-DD hh:mm'));
             ReviewFactory.editItem(fd).then(function (res) {

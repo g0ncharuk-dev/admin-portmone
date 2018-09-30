@@ -23,7 +23,7 @@
         vm.itemList = [
             {
                 id: 1,
-                state: "canceled",
+                state: false,
                 name: "Тест Тест",
                 email: "test@test.ccc",
                 phone: "+99 999 99 99 999",
@@ -37,7 +37,7 @@
 
             }, {
                 id: 2,
-                state: "allowed",
+                state:true,
                 name: "Тест Тест",
                 email: "test@test.ccc",
                 phone: "+99 999 99 99 999",
@@ -50,7 +50,7 @@
                 }
             }, {
                 id: 2,
-                state: "allowed",
+                state: true,
                 name: "Тест Тест",
                 email: "test@test.ccc",
                 phone: "+99 999 99 99 999",
@@ -58,44 +58,7 @@
                 message: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест"
             }
         ];
-        vm._itemList = [
-            {
-                id: 1,
-                state: "canceled",
-                name: "Тест Тест",
-                email: "test@test.ccc",
-                phone: "+99 999 99 99 999",
-                date: "",
-                message: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест ",
-                answer: {
-                    name: "Тест Тест",
-                    date: "",
-                    message: ""
-                }
-
-            }, {
-                id: 2,
-                state: "allowed",
-                name: "Тест Тест",
-                email: "test@test.ccc",
-                phone: "+99 999 99 99 999",
-                date: "",
-                message: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест ",
-                answer: {
-                    name: "Тест Тест",
-                    date: "",
-                    message: ""
-                }
-            }, {
-                id: 2,
-                state: "allowed",
-                name: "Тест Тест",
-                email: "test@test.ccc",
-                phone: "+99 999 99 99 999",
-                date: "",
-                message: "Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест Тест "
-            }
-        ];
+        vm._itemList = vm.itemList;
         //temp
 
         ReviewFactory.getItem(vm.token).then(function (res) {
