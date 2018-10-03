@@ -83,21 +83,7 @@
 
             NewsFactory.editItem(fd).then(function (res) {
                 if (res) {
-                    toastr.info('Новость изменена', {
-                        "autoDismiss": false,
-                        "positionClass": "toast-bottom-right",
-                        "type": "info",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "allowHtml": false,
-                        "closeButton": false,
-                        "tapToDismiss": true,
-                        "progressBar": false,
-                        "newestOnTop": true,
-                        "maxOpened": 0,
-                        "preventDuplicates": false,
-                        "preventOpenDuplicates": false
-                    })
+                    toastr.info('Изменено')
                 }
             }, function () {
                 toastr.error('Неудача!');

@@ -48,23 +48,9 @@
             fd.append("totalPrice", vm.formTotalPrice);
             fd.append("totalQuantity", vm.formTotalQuantity);
             OrderFactory.editItem(fd).then(function (res) {
-                if (res.status === 'success') {
-                    $state.go("main.news");
-                    toastr.info('Новость изменена', {
-                        "autoDismiss": false,
-                        "positionClass": "toast-bottom-right",
-                        "type": "info",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "allowHtml": false,
-                        "closeButton": false,
-                        "tapToDismiss": true,
-                        "progressBar": false,
-                        "newestOnTop": true,
-                        "maxOpened": 0,
-                        "preventDuplicates": false,
-                        "preventOpenDuplicates": false
-                    })
+                if (res) {
+                    $state.go("main.order");
+                    toastr.info('Измененно')
                 }
             }, function () {
                 baProgressModal.close();

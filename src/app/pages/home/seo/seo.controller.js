@@ -63,23 +63,8 @@
 
 
             SeoFactory.editItem(fd).then(function (res) {
-                if (res.status === 'success') {
-                    $state.go("main.catalog.category");
-                    toastr.info('Изменено', {
-                        "autoDismiss": false,
-                        "positionClass": "toast-bottom-right",
-                        "type": "info",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "allowHtml": false,
-                        "closeButton": false,
-                        "tapToDismiss": true,
-                        "progressBar": false,
-                        "newestOnTop": true,
-                        "maxOpened": 0,
-                        "preventDuplicates": false,
-                        "preventOpenDuplicates": false
-                    })
+                if (res) {
+                    toastr.info('Изменено')
                 }
             });
         }

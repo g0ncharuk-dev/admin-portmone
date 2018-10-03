@@ -27,36 +27,29 @@
             vm.formText = vm.editObj.message;
             vm.formState = vm.editObj.state;
 
-            vm.formAnsName = vm.editObj.answer.name;
+            vm.formAnsName = vm.editObj.answer.name || 'Admin';
             vm.formDate = new Date(vm.editObj.date);
             vm.formAnsText = vm.editObj.answer.message;
         }
 
         function editItem() {
             var fd = new FormData();
+            vm._answer = JSON.stringify({
+                "name": vm.formAnsName,
+                "date": vm.formDate,
+                "message": vm.formAnsText
+            });
+
             fd.append("remember_token", vm.token);
             fd.append("id", vm.editObj.id);
-            fd.append("approved", vm.formState?true:false);
-            fd.append("answer", vm.formName);
+            fd.append("approved", vm.formState ? true : false);
+            fd.append("answer", vm._answer);
             fd.append("news_date", moment(vm.formDate).format('YYYY-MM-DD hh:mm'));
             ReviewFactory.editItem(fd).then(function (res) {
-                if (res.status === 'success') {
-                    $state.go("main.news");
-                    toastr.info('Новость изменена', {
-                        "autoDismiss": false,
-                        "positionClass": "toast-bottom-right",
-                        "type": "info",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "allowHtml": false,
-                        "closeButton": false,
-                        "tapToDismiss": true,
-                        "progressBar": false,
-                        "newestOnTop": true,
-                        "maxOpened": 0,
-                        "preventDuplicates": false,
-                        "preventOpenDuplicates": false
-                    })
+                console.log(res)
+                if (res) {
+                    $state.go("main.review");
+                    toastr.info('Измененно')
                 }
             });
         }
