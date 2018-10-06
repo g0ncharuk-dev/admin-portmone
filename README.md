@@ -1,12 +1,3 @@
-### Documentation
-Installation, customization and other useful articles: https://akveo.github.io/blur-admin/
-
-*If you have problems installing and just want to download JS and css files, you can find download links here*: http://akveo.github.io/blur-admin/articles/091-downloads/
-
-## How can I support developers?
-- Star our GitHub repo
-- Create pull requests, submit bugs, suggest new features or documentation updates
-
 ## Features
 * Responsive layout
 * High resolution
