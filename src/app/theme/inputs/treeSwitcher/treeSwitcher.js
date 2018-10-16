@@ -10,13 +10,14 @@
 
 
     function treeSwitcher($compile) {
-        var template = "<div class='select' ng-click='openTree()'><p>{{selected.level}}. {{selected.name}}</p></div>";
+        var template = "<div class='select' ng-click='openTree()'><p>{{selected.name}}</p></div>";
         template += "<div class='list' ng-show='isOpen'></div>";
 
         return {
             restrict: 'E',
             scope: {
                 data: '=',
+                ignore: '=',
                 selected: '='
             },
 
@@ -35,12 +36,13 @@
             },
             link: function (scope, element, attrs, ngModel) {
                 var list = angular.element(element[0].querySelector('.list'));
-                scope.$watchGroup(['data', 'selected'], function (newValues, oldValues, scope) {
+                scope.$watchGroup(['data', 'selected','ignore'], function (newValues, oldValues, scope) {
                     list.html('');
 
                     if (!scope.selected) {
                         setSelected(scope, null);
                     }
+
                     var options = getOptions(scope, scope.data, 0);
                     list.append($compile(options)(scope));
                 });
@@ -58,10 +60,18 @@
         function getOptions(scope, data, level) {
 
             var optionUL = angular.element("<ul></ul>");
+            
 
             angular.forEach(data, function (obj) {
-                var optionLI = angular.element("<li></li>");
-                var optionA = angular.element("<p ng-class='{selected:selected.id==" + obj.id + "}' class='level-" + level + "'>" + obj.level + ". " + obj.name + "</p>");
+                if(scope.ignore !== obj.id) {
+                    var optionLI = angular.element("<li></li>");
+                } else {
+                    var optionLI = angular.element("<li ng-if='false'></li>");
+                }
+                
+                var optionA = angular.element("<p ng-class='{selected:selected.id==" + 
+                obj.id + "}' class='level-" + level + "'>" + obj.level + ". " + obj.name + "</p>");
+
                 optionLI.append(optionA);
 
                 // Set selected option if selected id or object exist..

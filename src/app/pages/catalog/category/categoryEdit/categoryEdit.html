@@ -28,8 +28,10 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Родительский каталог</label>
-                                    <tree-switcher class="tree-dropdown" data="vm.categoryTree"
-                                                   selected="vm.formParentCategory"></tree-switcher>
+                                    <tree-switcher class="tree-dropdown" 
+                                        data="vm.categoryTree"
+                                        ignore = "vm.treeIgnoreId"
+                                        selected="vm.formParentCategory"></tree-switcher>
                                 </div>
                             </div>
                             <div class="col-sm-12">

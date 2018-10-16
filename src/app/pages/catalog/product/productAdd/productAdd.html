@@ -18,7 +18,7 @@
                                     <input type="text" class="form-control" id="formName"
                                            ng-model="vm.formName"
                                            ng-minlength="4"
-                                           name="formName" placeholder="Название категории"
+                                           name="formName" placeholder="Название"
                                            required>
                                     <span class="help-block sub-little-text"
                                           ng-show="form.formName.$error.minlength">
@@ -99,12 +99,12 @@
                                      ng-class="{'has-error':
                                      form.formDiscount.$error.required&&
                                      (form.$submitted || form.formDiscount.$touched)}">
-                                    <label for="formDiscount">Скидка *</label>
+                                    <label for="formDiscount">Скидка</label>
                                     <input type="number" class="form-control" id="formDiscount"
                                            ng-model="vm.formDiscount"
                                            min="0"
                                            name="formDiscount" placeholder="Количество"
-                                           required>
+                                           >
                                 </div>
                             </div>
                             <div class="col-sm-12">

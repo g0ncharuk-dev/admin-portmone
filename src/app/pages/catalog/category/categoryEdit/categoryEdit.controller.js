@@ -38,6 +38,7 @@
             if (res) {
                 vm.categoryTree = res;
                 baProgressModal.close();
+                vm.treeIgnoreId = vm.editObj ? vm.editObj.id : ''; 
             }
         });
 

@@ -36,7 +36,5 @@
         function goBack() {
             $state.go("main.catalog.filters")
         }
-
     }
-
 })();

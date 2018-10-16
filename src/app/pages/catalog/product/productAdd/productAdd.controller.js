@@ -32,42 +32,6 @@
             ]
         };
 
-        //temp
-        vm.categoryTreeCild = [
-            {
-                created_at: "2018-03-07 09:53:54",
-                father_id: null,
-                filter_all: [{id: 15, name: "фильтр 3"}, {id: 14, name: "фильтр 2"}],
-                filters_check: [{id: 15, name: "фильтр 3"}, {id: 14, name: "фильтр 2"}],
-                id: 1,
-                level: 1,
-                meta_description: "test",
-                meta_keywords: "test",
-                meta_title: "test",
-                name: "test",
-                photo_url: null,
-                seo_text: "<p>testtesttesttesttestasdasd</p>",
-                show_on_home: null,
-                updated_at: "2018-03-07 09:53:54"
-            }, {
-                created_at: "2018-03-07 09:53:54",
-                father_id: 1,
-                filter_all: [{id: 15, name: "фильтр 3"}, {id: 14, name: "фильтр 2"}],
-                filters_check: [{id: 15, name: "фильтр 3"}, {id: 14, name: "фильтр 2"}],
-                id: 2,
-                level: 2,
-                meta_description: "test",
-                meta_keywords: "test",
-                meta_title: "test",
-                name: "test",
-                photo_url: null,
-                seo_text: "<p>testtesttesttesttestasdasd</p>",
-                show_on_home: null,
-                updated_at: "2018-03-07 09:53:54"
-            }
-        ];
-        //temp
-
         ProductFactory.getCategory(vm.token).then(function (res) {
             if (res) {
                 vm.categoryTreeCild = _.map(res , function (val) {
