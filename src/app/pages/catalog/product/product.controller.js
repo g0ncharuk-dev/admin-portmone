@@ -5,7 +5,7 @@
         .controller('ProductPageCtrl', ProductPageCtrl);
 
     /** @ngInject */
-    function ProductPageCtrl($scope, $filter, $state, toastr, baProgressModal, $uibModal, ProductFactory, dataService) {
+    function ProductPageCtrl($scope, $filter, $state, toastr, baProgressModal, $uibModal, ProductFactory, dataService, ImgConfig) {
         var vm = this;
 
         vm.createPage = createPage;
@@ -16,6 +16,8 @@
         vm.openDeleteModal = openDeleteModal;
         vm.showInStock = showInStock;
         vm.showInRecommended = showInRecommended;
+
+        vm.imageLink = ImgConfig.products;
 
         vm.token = localStorage.getItem('token');
         dataService.canAdd = true;
@@ -30,25 +32,6 @@
             {text: 'да', val: 1},
             {text: 'нет', val: 0}
         ];
-
-        //temp
-        vm.itemList = [
-            {
-                "id": "2739",
-                "category": "Сумки",
-                "link": "/card-product.html",
-                "name": "Hewlett-Packard EliteBook 2570P 12.5in i5 2.5GHz 4GB 250GB Win10Pro64 Webcam",
-                "image_main": "http://lorempixel.com/200/200/cats/0",
-                "price": 130,
-                "price_old": 100,
-                "count": 100,
-                "in_stock": true,
-                "discount": 20,
-                "in_recommended": true
-            }
-        ];
-        vm._itemList = vm.itemList;
-        //temp
 
         ProductFactory.getList(vm.token).then(function (res) {
             if (res) {

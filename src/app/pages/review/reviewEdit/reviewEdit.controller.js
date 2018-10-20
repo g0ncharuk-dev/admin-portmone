@@ -44,9 +44,14 @@
             fd.append("id", vm.editObj.id);
             fd.append("approved", vm.formState ? true : false);
             fd.append("answer", vm._answer);
-            fd.append("news_date", moment(vm.formDate).format('YYYY-MM-DD hh:mm'));
+            fd.append("answer_to_id", vm.editObj.answer_to_id);
+            fd.append("date", moment(vm.formDate).format('YYYY-MM-DD hh:mm'));
+            fd.append("email",vm.editObj.email);
+            fd.append("message",vm.editObj.message);
+            fd.append("name",vm.editObj.name);
+            fd.append("phone",vm.editObj.phone);
+            fd.append("state",vm.editObj.state);
             ReviewFactory.editItem(fd).then(function (res) {
-                console.log(res)
                 if (res) {
                     $state.go("main.review");
                     toastr.info('Измененно')

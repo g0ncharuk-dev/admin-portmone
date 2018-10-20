@@ -39,6 +39,7 @@
             vm.products = vm.editObj.products
         }
 
+
         function editItem() {
             var fd = new FormData();
             fd.append("remember_token", vm.token);

@@ -17,6 +17,8 @@
         vm.goBack = goBack;
         vm.fillForm = fillForm;
 
+        vm.imageLink = ImgConfig.products;
+
         vm.token = localStorage.getItem('token');
         vm.editorOptions = {
             heightMin: 100,
@@ -32,8 +34,6 @@
         };
         vm.editObj = dataService.editID;
         vm.editObj === null ? $state.go("main.catalog.product") : '';
-
-
 
         ProductFactory.getItemById(vm.token, vm.editObj).then(function (res) {
             if (res) {
@@ -84,18 +84,23 @@
             vm.formDiscount = Number(vm.productById.discount);
             vm.formInStock = JSON.parse(vm.productById.in_stock);
             vm.formInRecommended = JSON.parse(vm.productById.in_recommended);
-            vm.formParentCategory = vm.categoryTreeChildCheck
+            vm.formParentCategory = vm.categoryTreeChildCheck;
             vm.formFilters = vm.productFilters;
             vm.formMetaTitle = vm.productById.meta_title;
             vm.formTextDescription = vm.productById.description;
             vm.formMetaDescription = vm.productById.meta_description;
             vm.formMetaKeywords = vm.productById.meta_keywords;
             vm.formSeoText = vm.productById.seo_text;
-            vm.productById.image !== null ?
-                vm.formNewsImgTempUrl = _.map(function (val) {
-                    return ImgConfig.url + val.replace(' ', '%20')
+
+            console.log(
+            );
+
+
+            vm.productById.photos !== null ?
+                vm.formImgTempUrl = _.map(vm.productById.photos,function (val) {
+                    return vm.imageLink + val.photo_url
                 }) :
-                vm.formNewsImgTempUrl = null
+                vm.formImgTempUrl = null
         }
         function editItem() {
             var fd = new FormData();

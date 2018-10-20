@@ -11,9 +11,10 @@
         .constant('moment', moment)
         .constant('_', window._)
         .constant('ImgConfig', (function () {
-            var IMAGES_ROOT = 'https://portmonetka.com.ua/Shop/photo/';
+            var IMAGES_ROOT = 'https://postmetro.net/public/photo/';
             return {
-                slider: IMAGES_ROOT + 'slider/'
+                slider: IMAGES_ROOT + 'slider/',
+                products: IMAGES_ROOT + 'products/'
             }
         })())
         .constant('Config', (function () {

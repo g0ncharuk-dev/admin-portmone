@@ -42,7 +42,7 @@
                         <tr ng-repeat="item in vm.itemList">
                             <td st-ratio="10" class="table-id">{{item.id}}</td>
                             <td st-ratio="10" class="text-left">
-                                <img ng-src="{{item.image_main}}" width="30" height="30">
+                                <img ng-src="{{ vm.imageLink + item.image_main}}" width="30" height="30">
                             </td>
                             <td st-ratio="20" class="text-left">{{item.category}}</td>
                             <td st-ratio="30" class="text-left"
