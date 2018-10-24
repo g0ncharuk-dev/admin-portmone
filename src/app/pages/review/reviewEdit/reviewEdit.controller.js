@@ -27,9 +27,9 @@
             vm.formText = vm.editObj.message;
             vm.formState = vm.editObj.state;
 
-            vm.formAnsName = vm.editObj.answer.name || 'Admin';
-            vm.formDate = new Date(vm.editObj.date);
-            vm.formAnsText = vm.editObj.answer.message;
+            vm.formAnsName = vm.editObj.answer[0].name || 'Admin';
+            vm.formDate = new Date(vm.editObj.answer[0].date);
+            vm.formAnsText = vm.editObj.answer[0].message;
         }
 
         function editItem() {

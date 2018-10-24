@@ -19,31 +19,6 @@
         vm.tableSize = 20;
         baProgressModal.open();
 
-        //temp
-        vm.itemList = [
-            {
-                "id": "1",
-                "level": "0",
-                "name": "Категории",
-                "parent":
-                    {"id": 1, "level": 0, "name": "Невыбрано"},
-                "filter": [
-                    {"id": 2, "name": "Материал"},
-                    {"id": 3, "name": "Цвет"}
-                ],
-                "filters_check": [
-                    {"id": 2, "name": "Материал"}
-                ],
-                "seo_text": "seo_text",
-                "meta_title": "meta_title",
-                "meta_description": "meta_description",
-                "meta_keywords": "meta_keywords",
-                "photo_url": ["images/news/news_2018-01-26%2014:29:01.png"]
-            }
-        ];
-        vm._itemList = vm.itemList;
-        //temp
-
         CategoryFactory.getItem(vm.token).then(function (res) {
             if (res) {
                 vm.itemList = res;
