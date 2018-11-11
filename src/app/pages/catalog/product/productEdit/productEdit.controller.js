@@ -91,16 +91,11 @@
             vm.formMetaDescription = vm.productById.meta_description;
             vm.formMetaKeywords = vm.productById.meta_keywords;
             vm.formSeoText = vm.productById.seo_text;
-
-            console.log(
-            );
-
-
             vm.productById.photos !== null ?
                 vm.formImgTempUrl = _.map(vm.productById.photos,function (val) {
-                    return vm.imageLink + val.photo_url
+                    return val.photo_url
                 }) :
-                vm.formImgTempUrl = null
+                vm.formImgTempUrl = null;
         }
         function editItem() {
             var fd = new FormData();

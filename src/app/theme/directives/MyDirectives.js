@@ -161,8 +161,6 @@
                     var img = new Image();
                     img.onload = onLoadImage;
                     img.src = params.file;
-
-                    console.log( params)
                 }
 
                 function onLoadImage() {
